@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.1", "Digit4lSpace", null)]
+[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.2", "Digit4lSpace", null)]
 [assembly: MelonGame("Stress Level Zero", "BONEWORKS")]
 
 namespace CutContentRestorer_BW
@@ -230,95 +230,96 @@ namespace CutContentRestorer_BW
                 MelonCoroutines.Start(ArenaSwitcher());
         }
 
-        private void ArenaCampaignStuff(GameObject[] allObjects)
+        private void LevelStuff(string sceneName, GameObject[] allObjects)
         {
-            GameObject floorCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            floorCollider.transform.position = new Vector3(1.568f, -0.003f, 120.2837f);
-            floorCollider.transform.rotation = Quaternion.Euler(-90.00001f, 0f, -90.00001f);
-            floorCollider.transform.localScale = new Vector3(10.8033f, 10.80591f, 0.03490543f);
-            floorCollider.GetComponent<MeshRenderer>().enabled = false;
-            LoggerInstance.Msg("Tavern floor Void clip fixed!");
-
-            foreach (GameObject obj in allObjects)
+            if (sceneName == "scene_arena")
             {
-                if (obj.name == "TRIGGER_EXIT" && obj.scene.name == "scene_arena")
+                GameObject floorCollider = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                floorCollider.transform.position = new Vector3(1.568f, -0.003f, 120.2837f);
+                floorCollider.transform.rotation = Quaternion.Euler(-90.00001f, 0f, -90.00001f);
+                floorCollider.transform.localScale = new Vector3(10.8033f, 10.80591f, 0.03490543f);
+                floorCollider.GetComponent<MeshRenderer>().enabled = false;
+                LoggerInstance.Msg("Tavern floor Void clip fixed!");
+
+                foreach (GameObject obj in allObjects)
                 {
-                    obj.transform.position = new Vector3(41.91f, -0.86f, 131.99f);
-                    obj.transform.rotation = Quaternion.Euler(180f, 89.99999f, 180f);
-                    LoggerInstance.Msg("Arena portal moved!");
+                    if (obj.name == "TRIGGER_EXIT" && obj.scene.name == "scene_arena")
+                    {
+                        obj.transform.position = new Vector3(41.91f, -0.86f, 131.99f);
+                        obj.transform.rotation = Quaternion.Euler(180f, 89.99999f, 180f);
+                        LoggerInstance.Msg("Arena portal moved!");
+                    }
                 }
             }
-        }
-
-        private void ZombieWarehouseStuff(GameObject[] allObjects)
-        {
-            foreach (GameObject obj in allObjects)
+            else if (sceneName == "zombie_warehouse")
             {
-                if (obj.name == "prop_onOffLever (1)" && obj.scene.name == "zombie_warehouse" && obj.transform.parent.name == "CUREMACHINE (1)")
+                foreach (GameObject obj in allObjects)
                 {
-                    foreach (GameObject target in allObjects)
+                    if (obj.name == "prop_onOffLever (1)" && obj.scene.name == "zombie_warehouse" && obj.transform.parent.name == "CUREMACHINE (1)")
                     {
-                        if (target.name == "OLD" && target.scene.name == "zombie_warehouse")
+                        foreach (GameObject target in allObjects)
                         {
-                            obj.transform.SetParent(target.transform);
-                            obj.transform.localPosition = new Vector3(-0.074f, 0.289f, 0.564f);
-                            obj.SetActive(true);
+                            if (target.name == "OLD" && target.scene.name == "zombie_warehouse")
+                            {
+                                obj.transform.SetParent(target.transform);
+                                obj.transform.localPosition = new Vector3(-0.074f, 0.289f, 0.564f);
+                                obj.SetActive(true);
+                            }
                         }
                     }
                 }
-            }
 
-            foreach (GameObject obj in allObjects)
-            {
-                if (obj.name == "OLD" && obj.scene.name == "zombie_warehouse")
+                foreach (GameObject obj in allObjects)
                 {
-                    obj.SetActive(true);
-                    for (int i = 0; i < obj.transform.childCount; i++)
+                    if (obj.name == "OLD" && obj.scene.name == "zombie_warehouse")
                     {
-                        obj.transform.GetChild(i).gameObject.SetActive(true);
+                        obj.SetActive(true);
+                        for (int i = 0; i < obj.transform.childCount; i++)
+                        {
+                            obj.transform.GetChild(i).gameObject.SetActive(true);
+                        }
+                        LoggerInstance.Msg("Old Cure Machine enabled!");
                     }
-                    LoggerInstance.Msg("Old Cure Machine enabled!");
                 }
             }
-        }
-
-        private void RedactedChamberStuff(GameObject[] allObjects)
-        {
-            foreach (GameObject obj in allObjects)
+            else if (sceneName == "scene_redactedChamber")
             {
-                if (obj.name == "dest_explodingBarrel" && obj.scene.name == "scene_redactedChamber")
+                foreach (GameObject obj in allObjects)
                 {
-                    obj.transform.position = new Vector3(-11.453f, -0.86f, 2.492f);
-                    obj.transform.rotation = Quaternion.Euler(0f, -135.393f, 0f);
-                }
-                if (obj.name == "dest_pallet_A" && obj.scene.name == "scene_redactedChamber")
-                {
-                    obj.transform.position = new Vector3(-10.896f, -0.86f, -1.656f);
-                }
-                if (obj.name == "Container (1)" && obj.scene.name == "scene_redactedChamber")
-                {
-                    obj.transform.position = new Vector3(-8.89f, 2.65f, -6.99f);
-                }
-                if (obj.name == "Hexagonal_Container" && obj.scene.name == "scene_redactedChamber")
-                {
-                    obj.transform.position = new Vector3(-8.89f, 0.9f, -6.99f);
-                }
-                if (obj.name == "place_deskStation" && obj.scene.name == "scene_redactedChamber")
-                {
-                    obj.transform.position = new Vector3(-1.306f, 1.002f, 19.007f);
+                    if (obj.name == "dest_explodingBarrel" && obj.scene.name == "scene_redactedChamber")
+                    {
+                        obj.transform.position = new Vector3(-11.453f, -0.86f, 2.492f);
+                        obj.transform.rotation = Quaternion.Euler(0f, -135.393f, 0f);
+                    }
+                    if (obj.name == "dest_pallet_A" && obj.scene.name == "scene_redactedChamber")
+                    {
+                        obj.transform.position = new Vector3(-10.896f, -0.86f, -1.656f);
+                    }
+                    if (obj.name == "Container (1)" && obj.scene.name == "scene_redactedChamber")
+                    {
+                        obj.transform.position = new Vector3(-8.89f, 2.65f, -6.99f);
+                    }
+                    if (obj.name == "Hexagonal_Container" && obj.scene.name == "scene_redactedChamber")
+                    {
+                        obj.transform.position = new Vector3(-8.89f, 0.9f, -6.99f);
+                    }
+                    if (obj.name == "place_deskStation" && obj.scene.name == "scene_redactedChamber")
+                    {
+                        obj.transform.position = new Vector3(-1.306f, 1.002f, 19.007f);
+                    }
                 }
             }
-        }
-
-        private void MuseumBasementStuff(GameObject[] allObjects)
-        {
-            foreach (GameObject obj in allObjects)
+            else if (sceneName == "sandbox_museumBasement")
             {
-                if (obj.name == "env_monomat_dispSys" && obj.scene.name == "sandbox_museumBasement")
+                foreach (GameObject obj in allObjects)
                 {
-                    obj.transform.position = new Vector3(3.88f, 0f, -0.507f);
+                    if (obj.name == "env_monomat_dispSys" && obj.scene.name == "sandbox_museumBasement")
+                    {
+                        obj.transform.position = new Vector3(3.88f, 0f, -0.507f);
+                    }
                 }
             }
+            else return;
         }
 
         private IEnumerator ArenaSwitcher()
@@ -396,17 +397,7 @@ namespace CutContentRestorer_BW
 
             if (sceneName == "sandbox_blankBox" && !_blankBox.Value || sceneName == "arena_fantasy" && !_fantasyArena.Value) yield break;
 
-            if (sceneName == "scene_arena")
-                ArenaCampaignStuff(allObjects);
-
-            if (sceneName == "zombie_warehouse")
-                ZombieWarehouseStuff(allObjects);
-
-            if (sceneName == "scene_redactedChamber")
-                RedactedChamberStuff(allObjects);
-
-            if (sceneName == "sandbox_museumBasement")
-                MuseumBasementStuff(allObjects);
+            LevelStuff(sceneName, allObjects);
 
             int count = 0;
 
