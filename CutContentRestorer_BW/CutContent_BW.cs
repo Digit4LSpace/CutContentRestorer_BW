@@ -54,6 +54,11 @@ namespace CutContentRestorer_BW
 
             var menu = MenuManager.CreateCategory("Cut Content Restorer", Color.magenta);
 
+            menu.CreateFunctionElement("Reload Level", Color.red, () =>
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            });
+
             menu.CreateBoolElement("Gun Stuff", Color.white, _gunStuff.Value,
                 (bool v) => { _gunStuff.Value = v; MelonPreferences.Save(); });
 
