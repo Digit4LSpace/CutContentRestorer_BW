@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.6", "Digit4lSpace", null)]
+[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.4", "Digit4lSpace", null)]
 [assembly: MelonGame("Stress Level Zero", "BONEWORKS")]
 
 namespace CutContentRestorer_BW
@@ -149,9 +149,9 @@ namespace CutContentRestorer_BW
                 ),
                 ["scene_towerBoss"] = (
                     new[] { "skele_Geo", "VoiD Leak Stage (1)", "grid_30m_ballistic", "STAIRS (1)", 
-                            "plateCover_top_null", "prop_onOffSlider", "Particle System", "particles_stars", 
-                            "Spot Light", "Spotlight", "pyramid", "SW_5_Corridor_Small_Ceiling_04",
-                            "chamber_piece_20mx20m (3)", "chamber_piece_20mx20m (18)", "chamber_piece_20mx20m (24)",
+                            "plateCover_top_null", "prop_onOffSlider", "particles_stars", 
+                            "Spot Light", "Spotlight", "pyramid", "SW_5_Corridor_Small_Ceiling_04", 
+                            "chamber_piece_20mx20m (18)", "chamber_piece_20mx20m (24)",
                             "chamber_piece_20mx20m (3)", "chamber_piece_20mx20m (22)", "chamber_piece_20mx20m (15)",
                             "chamber_piece_20mx20m (2)", "chamber_piece_20mx20m (25)", "chamber_piece_20mx20m (12)",
                             "chamber_piece_20mx20m (17)", "chamber_piece_20mx20m (14)", "chamber_piece_20mx20m (21)",
@@ -164,8 +164,7 @@ namespace CutContentRestorer_BW
                             "plane_12x20 (20)", "plane_12x20 (10)", "plane_12x20 (12)", "plane_12x20 (19)", "plane_12x20 (17)",
                             "plane_12x20 (16)", "plane_12x20 (21)", "plane_12x20 (18)", "box_ammo_destructable", "box_ammo_destructable (1)",
                             "box_ammo_destructable (2)", "box_ammo_destructable (3)", "plane_12x14 (2)", "plane_12x14 (3)",
-                            "light_worklight", "SMARTLIGHT", "light_worklight_Sign_Alt_TEMP", "SMARTLIGHT", "Quad", 
-                            "Quad (1)", "Quad (2)" },
+                            "light_worklight", "SMARTLIGHT", "light_worklight_Sign_Alt_TEMP", "SMARTLIGHT" },
                     new string[] { }
                 ),
                 ["scene_dungeon"] = (
