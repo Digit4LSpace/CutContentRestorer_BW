@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.2", "Digit4lSpace", null)]
+[assembly: MelonInfo(typeof(CutContentRestorer_BW.CutContent_BW), "CutContentRestorer_BW", "1.2.6", "Digit4lSpace", null)]
 [assembly: MelonGame("Stress Level Zero", "BONEWORKS")]
 
 namespace CutContentRestorer_BW
@@ -138,9 +138,29 @@ namespace CutContentRestorer_BW
                     new string[] { }
                 ),
                 ["scene_towerBoss"] = (
-                    new[] { "skele_Geo", "VoiD Leak Stage (1)", "grid_30m_ballistic",
-                            "STAIRS (1)", "plateCover_top_null", "prop_onOffSlider", "Particle System" },
+                    new[] { "skele_Geo", "VoiD Leak Stage (1)", "grid_30m_ballistic", "STAIRS (1)", 
+                            "plateCover_top_null", "prop_onOffSlider", "Particle System", "particles_stars", 
+                            "Spot Light", "Spotlight", "pyramid", "SW_5_Corridor_Small_Ceiling_04",
+                            "chamber_piece_20mx20m (3)", "chamber_piece_20mx20m (18)", "chamber_piece_20mx20m (24)",
+                            "chamber_piece_20mx20m (3)", "chamber_piece_20mx20m (22)", "chamber_piece_20mx20m (15)",
+                            "chamber_piece_20mx20m (2)", "chamber_piece_20mx20m (25)", "chamber_piece_20mx20m (12)",
+                            "chamber_piece_20mx20m (17)", "chamber_piece_20mx20m (14)", "chamber_piece_20mx20m (21)",
+                            "chamber_piece_20mx20m (26)", "chamber_piece_20mx20m (19)", "chamber_piece_20mx20m (28)",
+                            "chamber_piece_20mx20m (30)", "chamber_piece_20mx20m (29)", "chamber_piece_20mx20m (27)",
+                            "chamber_piece_20mx20m (20)", "chamber_piece_20mx20m (23)", "chamber_piece_20mx20m (31)", 
+                            "chamber_piece_20mx20m (16)", "Spew_Steam (3)", "plane_12x20 (6)", "plane_12x20 (11)",
+                            "plane_12x20 (8)", "plane_12x20 (14)", "plane_12x20 (5)", "plane_12x20", "plane_12x20 (7)",
+                            "plane_12x20 (4)", "plane_12x20 (2)", "plane_12x20 (9)", "plane_12x20 (13)", "plane_12x20 (15)",
+                            "plane_12x20 (20)", "plane_12x20 (10)", "plane_12x20 (12)", "plane_12x20 (19)", "plane_12x20 (17)",
+                            "plane_12x20 (16)", "plane_12x20 (21)", "plane_12x20 (18)", "box_ammo_destructable", "box_ammo_destructable (1)",
+                            "box_ammo_destructable (2)", "box_ammo_destructable (3)", "plane_12x14 (2)", "plane_12x14 (3)",
+                            "light_worklight", "SMARTLIGHT", "light_worklight_Sign_Alt_TEMP", "SMARTLIGHT" },
                     new string[] { }
+                ),
+                ["scene_dungeon"] = (
+                    new[] { "DEVMANIPTOOL", "Dungeon_TowerMid (1)", "Dungeon_TowerMid (2)", "Dungeon_TowerMid (3)", "Dungeon_TowerMid (4)", 
+                            "Dungeon_TowerMid (5)", "Dungeon_TowerMid (6)", "Dungeon_TowerMid (7)", "chamber_82x82x42_r" },
+                    new string[] {  }
                 ),
                 ["scene_arena"] = (
                     new[] { "OLD_SECTION_WINDMILL-HOUSES", "grid_Castle (1)", "CARGOCART (1)", "CARGOCART",
