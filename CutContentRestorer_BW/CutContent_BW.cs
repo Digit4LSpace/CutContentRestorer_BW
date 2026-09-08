@@ -18,6 +18,7 @@ namespace CutContentRestorer_BW
         private MelonPreferences_Entry<bool> _blankBox;
         private MelonPreferences_Entry<bool> _fantasyArena;
         private MelonPreferences_Entry<bool> _throneRoomExitPortal;
+        private MelonPreferences_Entry<bool> _towerBossExitPortal;
         private MelonPreferences_Entry<bool> _backpackStraps;
         private MelonPreferences_Entry<bool> _NPCFordMeshes;
         private MelonPreferences_Entry<bool> _onlyNewGeoMovers;
@@ -40,12 +41,18 @@ namespace CutContentRestorer_BW
             "brett_hairCap", "brett_hairCards", "brett_accessories_belt_mesh"
         };
 
+        private string[] _towerBossExitObjects =
+        {
+            "Particle System", "Quad", "Quad (1)", "Quad (2)"
+        };
+
         public override void OnApplicationStart()
         {
             _category = MelonPreferences.CreateCategory("CutContentRestorer");
             _gunStuff = _category.CreateEntry("GunStuff", true, "Enable gun stuff");
             _blankBox = _category.CreateEntry("BlankBox", true, "Enable BlankBox stuff");
             _fantasyArena = _category.CreateEntry("FantasyArena", true, "Enable Fantasy Arena stuff");
+            _towerBossExitPortal = _category.CreateEntry("TimeTowerExitPortal", true, "Enable Time Tower Exit Portal");
             _throneRoomExitPortal = _category.CreateEntry("ThroneRoomExitPortal", true, "Enable Throne Room Exit Portal");
             _backpackStraps = _category.CreateEntry("BackpackStraps", true, "Enable the Backpack Straps");
             _NPCFordMeshes = _category.CreateEntry("NPCFordMeshes", true, "Restore Ford meshes on most NPCs");
@@ -67,6 +74,9 @@ namespace CutContentRestorer_BW
 
             menu.CreateBoolElement("Fantasy Arena", Color.white, _fantasyArena.Value,
                 (bool v) => { _fantasyArena.Value = v; MelonPreferences.Save(); });
+            
+            menu.CreateBoolElement("Time Tower Exit Portal", Color.white, _towerBossExitPortal.Value,
+                (bool v) => { _towerBossExitPortal.Value = v; MelonPreferences.Save(); });
 
             menu.CreateBoolElement("Throne Room Exit Portal", Color.white, _throneRoomExitPortal.Value,
                 (bool v) => { _throneRoomExitPortal.Value = v; MelonPreferences.Save(); });
@@ -154,7 +164,8 @@ namespace CutContentRestorer_BW
                             "plane_12x20 (20)", "plane_12x20 (10)", "plane_12x20 (12)", "plane_12x20 (19)", "plane_12x20 (17)",
                             "plane_12x20 (16)", "plane_12x20 (21)", "plane_12x20 (18)", "box_ammo_destructable", "box_ammo_destructable (1)",
                             "box_ammo_destructable (2)", "box_ammo_destructable (3)", "plane_12x14 (2)", "plane_12x14 (3)",
-                            "light_worklight", "SMARTLIGHT", "light_worklight_Sign_Alt_TEMP", "SMARTLIGHT" },
+                            "light_worklight", "SMARTLIGHT", "light_worklight_Sign_Alt_TEMP", "SMARTLIGHT", "Quad", 
+                            "Quad (1)", "Quad (2)" },
                     new string[] { }
                 ),
                 ["scene_dungeon"] = (
@@ -427,9 +438,12 @@ namespace CutContentRestorer_BW
 
                 if (data.enable.Contains(obj.name))
                 {
-                    obj.SetActive(true);
-                    count++;
-                    LoggerInstance.Msg($"{obj.name} Enabled.");
+                    if (!obj.activeSelf)
+                    {
+                        obj.SetActive(true);
+                        count++;
+                        LoggerInstance.Msg($"{obj.name} Enabled.");
+                    }
                 }
                 else if (data.disable.Contains(obj.name))
                 {
@@ -442,6 +456,15 @@ namespace CutContentRestorer_BW
                 foreach (GameObject obj in allObjects)
                 {
                     if (obj.name == "TRIGGER_EXIT" && obj.scene.name == "scene_throneRoom")
+                        obj.SetActive(false);
+                }
+            }
+
+            if (sceneName == "scene_towerBoss" && !_towerBossExitPortal.Value)
+            {
+                foreach (GameObject obj in allObjects)
+                {
+                    if (_towerBossExitObjects.Contains(obj.name) && obj.scene.name == "scene_towerBoss")
                         obj.SetActive(false);
                 }
             }
